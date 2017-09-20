@@ -5,9 +5,9 @@
 		<PackageTargetFallback>portable-win+net45+wp80+win81+wpa81</PackageTargetFallback>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Xamarin.Forms" Version="2.4.0.266-pre1" />
 		<PackageReference Include="Plugin.MediaManager" Version="0.4.4" />
 		<PackageReference Include="Plugin.MediaManager.Forms" Version="0.4.3" />
+		<PackageReference Include="Xamarin.Forms" Version="2.4.0.275-pre3" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Pages\" />
