@@ -16,6 +16,7 @@ namespace AzureMediaServicesSampleApp.Droid
 
             base.OnCreate(savedInstanceState);
 
+            global::Xamarin.Forms.Forms.SetFlags("FastRenderers_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             VideoViewRenderer.Init();
 

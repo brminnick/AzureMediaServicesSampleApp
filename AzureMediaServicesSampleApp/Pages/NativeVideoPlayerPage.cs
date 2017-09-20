@@ -1,5 +1,8 @@
 ﻿using Xamarin.Forms;
+
 using Plugin.MediaManager.Forms;
+
+using AzureMediaServicesSampleApp.Shared;
 
 namespace AzureMediaServicesSampleApp
 {
@@ -9,7 +12,7 @@ namespace AzureMediaServicesSampleApp
         {
             Title = "Native Video Player";
 
-            Content = new VideoView { Source = MediaConstants.VideoUrl };
+            Content = new VideoView { Source = MediaConstants.EncryptedVideoUrl };
         }
     }
 }
