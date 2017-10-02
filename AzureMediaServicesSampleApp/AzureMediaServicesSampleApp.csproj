@@ -7,10 +7,10 @@
 	<ItemGroup>
 		<PackageReference Include="Plugin.MediaManager" Version="0.4.4" />
 		<PackageReference Include="Plugin.MediaManager.Forms" Version="0.4.3" />
-		<PackageReference Include="Xamarin.Forms" Version="2.4.0.275-pre3" />
+		<PackageReference Include="Xamarin.Forms" Version="2.4.0.282" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Pages\" />
-		<Folder Include="Constants\" />
 	</ItemGroup>
+	<Import Project="..\AzureMediaServicesSampleApp.Shared\AzureMediaServicesSampleApp.Shared.projitems" Label="Shared" Condition="Exists('..\AzureMediaServicesSampleApp.Shared\AzureMediaServicesSampleApp.Shared.projitems')" />
 </Project>

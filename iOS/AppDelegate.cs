@@ -10,8 +10,8 @@ namespace AzureMediaServicesSampleApp.iOS
     {
         public override bool FinishedLaunching(UIApplication uiApplication, NSDictionary launchOptions)
         {
+			VideoViewRenderer.Init();
             global::Xamarin.Forms.Forms.Init();
-            VideoViewRenderer.Init();
 
             LoadApplication(new App());
 
