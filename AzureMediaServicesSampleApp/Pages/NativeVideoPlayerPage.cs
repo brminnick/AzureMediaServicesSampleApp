@@ -11,6 +11,7 @@ namespace AzureMediaServicesSampleApp
 {
     public class NativeVideoPlayerPage : ContentPage
     {
+        readonly VideoView _videoView;
         readonly Button _playButton, _pauseButton, _stopButton;
 
         public NativeVideoPlayerPage()
@@ -20,9 +21,8 @@ namespace AzureMediaServicesSampleApp
 
             Title = "Native Video Player";
 
-            var videoView = new VideoView
+            _videoView = new VideoView
             {
-                Source = MediaConstants.EncryptedVideoUrl,
                 AspectMode = Plugin.MediaManager.Abstractions.Enums.VideoAspectMode.AspectFit
             };
 
@@ -35,21 +35,21 @@ namespace AzureMediaServicesSampleApp
             Func<RelativeLayout, double> getStopButtonHeight = (p) => _stopButton.Measure(p.Width, p.Height).Request.Height;
 
             var relativeLayout = new RelativeLayout();
-            relativeLayout.Children.Add(videoView,
+            relativeLayout.Children.Add(_videoView,
                                         Constraint.Constant(0),
                                         Constraint.Constant(0));
             relativeLayout.Children.Add(_playButton,
                                         Constraint.Constant(horizontalButtonPadding),
                                         Constraint.RelativeToParent(parent => parent.Height - verticalButtonPadding - getPlayButtonHeight(parent)),
                                         Constraint.RelativeToParent(parent => (parent.Width - 4 * horizontalButtonPadding) / 3));
-			relativeLayout.Children.Add(_pauseButton,
-                                        Constraint.RelativeToView(_playButton, (parent,view)=> view.X + view.Width + horizontalButtonPadding),
-										Constraint.RelativeToParent(parent => parent.Height - verticalButtonPadding - getPlayButtonHeight(parent)),
-										Constraint.RelativeToParent(parent => (parent.Width - 4 * horizontalButtonPadding) / 3));
-			relativeLayout.Children.Add(_stopButton,
-										Constraint.RelativeToView(_pauseButton, (parent, view) => view.X + view.Width + horizontalButtonPadding),
-										Constraint.RelativeToParent(parent => parent.Height - verticalButtonPadding - getPlayButtonHeight(parent)),
-										Constraint.RelativeToParent(parent => (parent.Width - 4 * horizontalButtonPadding) / 3));
+            relativeLayout.Children.Add(_pauseButton,
+                                        Constraint.RelativeToView(_playButton, (parent, view) => view.X + view.Width + horizontalButtonPadding),
+                                        Constraint.RelativeToParent(parent => parent.Height - verticalButtonPadding - getPauseButtonHeight(parent)),
+                                        Constraint.RelativeToParent(parent => (parent.Width - 4 * horizontalButtonPadding) / 3));
+            relativeLayout.Children.Add(_stopButton,
+                                        Constraint.RelativeToView(_pauseButton, (parent, view) => view.X + view.Width + horizontalButtonPadding),
+                                        Constraint.RelativeToParent(parent => parent.Height - verticalButtonPadding - getStopButtonHeight(parent)),
+                                        Constraint.RelativeToParent(parent => (parent.Width - 4 * horizontalButtonPadding) / 3));
 
             Content = relativeLayout;
         }
@@ -59,6 +59,11 @@ namespace AzureMediaServicesSampleApp
             base.OnAppearing();
 
             SubscribeEventHandlers();
+
+            _videoView.Source = MediaConstants.EncryptedVideoUrl;
+
+            CrossMediaManager.Current.Pause();
+            CrossMediaManager.Current.Play();
         }
 
         protected override void OnDisappearing()
@@ -67,26 +72,26 @@ namespace AzureMediaServicesSampleApp
 
             UnsubscribeEventHandlers();
 
-            CrossMediaManager.Current.Stop();
+            CrossMediaManager.Current.Pause();
         }
 
         void SubscribeEventHandlers()
         {
             _playButton.Clicked += HandlePlayButtonClicked;
-            _pauseButton.Clicked += HandlePauseButtonClicked;
             _stopButton.Clicked += HandleStopButtonClicked;
+            _pauseButton.Clicked += HandlePauseButtonClicked;
         }
 
         void UnsubscribeEventHandlers()
         {
-			_playButton.Clicked -= HandlePlayButtonClicked;
-			_pauseButton.Clicked -= HandlePauseButtonClicked;
-			_stopButton.Clicked -= HandleStopButtonClicked;
+            _playButton.Clicked -= HandlePlayButtonClicked;
+            _stopButton.Clicked -= HandleStopButtonClicked;
+            _pauseButton.Clicked -= HandlePauseButtonClicked;
         }
 
-        void HandlePauseButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Pause();
         void HandlePlayButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Play();
-		void HandleStopButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Stop();
+        void HandleStopButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Stop();
+        void HandlePauseButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Pause();
 
-	}
+    }
 }
