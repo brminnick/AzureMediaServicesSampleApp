@@ -1,51 +1,67 @@
 ﻿using System;
+
 using Xamarin.Forms;
 
 namespace AzureMediaServicesSampleApp
 {
-    public class VideoSelectionPage : ContentPage
-    {
-        readonly Button _webViewPageButton, _nativeVideoPlayerButton;
+	public class VideoSelectionPage : ContentPage
+	{
+		readonly Button _webViewPageButton, _nativeVideoPlayerButton;
 
-        public VideoSelectionPage()
-        {
-            _webViewPageButton = new Button { Text = "Watch As WebView" };
-            _nativeVideoPlayerButton = new Button { Text = "Watch in Native Video Player" };
+		public VideoSelectionPage()
+		{
+			_webViewPageButton = new Button { Text = "Watch As WebView" };
+			_nativeVideoPlayerButton = new Button { Text = "Watch in Native Video Player" };
 
-            Title = "Choose a Video";
+			var androidEmulatorLabel = new Label
+			{
+				Text = "Note: Video playback fails when on an Android emulator\n\nPlease run this sample on a physical Android Device",
+				FontAttributes = FontAttributes.Italic,
+				HorizontalTextAlignment = TextAlignment.Center
+			};
 
-            Content = new StackLayout
-            {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
+			Title = "Choose a Video";
 
-                Children = {
-                    _webViewPageButton,
-                    _nativeVideoPlayerButton
-                }
-            };
-        }
+			var stackLayout = new StackLayout
+			{
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.Center,
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
+				Children = {
+					_webViewPageButton,
+					_nativeVideoPlayerButton
+				}
+			};
+			switch (Device.RuntimePlatform)
+			{
+				case Device.Android:
+					stackLayout.Children.Add(androidEmulatorLabel);
+					break;
+			}
 
-            _webViewPageButton.Clicked += HandleWebViewPageButtonClicked;
-            _nativeVideoPlayerButton.Clicked += HandleNativeVideoPlayerButtonClicked;
-        }
+			Content = stackLayout;
+		}
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
 
-            _webViewPageButton.Clicked -= HandleWebViewPageButtonClicked;
-            _nativeVideoPlayerButton.Clicked -= HandleNativeVideoPlayerButtonClicked;
-        }
+			_webViewPageButton.Clicked += HandleWebViewPageButtonClicked;
+			_nativeVideoPlayerButton.Clicked += HandleNativeVideoPlayerButtonClicked;
+		}
 
-        void HandleWebViewPageButtonClicked(object sender, EventArgs e) =>
-            Device.BeginInvokeOnMainThread(async () => await Navigation.PushAsync(new VideoWebViewPage()));
+		protected override void OnDisappearing()
+		{
+			base.OnDisappearing();
 
-        void HandleNativeVideoPlayerButtonClicked(object sender, EventArgs e) =>
-            Device.BeginInvokeOnMainThread(async () => await Navigation.PushAsync(new NativeVideoPlayerPage()));
-    }
+			_webViewPageButton.Clicked -= HandleWebViewPageButtonClicked;
+			_nativeVideoPlayerButton.Clicked -= HandleNativeVideoPlayerButtonClicked;
+		}
+
+		void HandleWebViewPageButtonClicked(object sender, EventArgs e) =>
+			Device.BeginInvokeOnMainThread(async () => await Navigation.PushAsync(new VideoWebViewPage()));
+
+		void HandleNativeVideoPlayerButtonClicked(object sender, EventArgs e) =>
+			Device.BeginInvokeOnMainThread(async () => await Navigation.PushAsync(new NativeVideoPlayerPage()));
+	}
 }
