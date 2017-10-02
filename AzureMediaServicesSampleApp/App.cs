@@ -8,13 +8,11 @@ namespace AzureMediaServicesSampleApp
 {
     public class App : Application
     {
-        public App() => MainPage = new NavigationPage(new VideoSelectionPage());
-
-        protected override void OnStart()
+        public App()
         {
-            base.OnStart();
+            CrossMediaManager.Current.RequestHeaders.Add(MediaConstants.EncryptedVideoHeaderKey, MediaConstants.EncryptedVideoHeaderToken);
 
-            CrossMediaManager.Current.RequestHeaders.Add("Authorization", MediaConstants.EncryptedVideoBearerToken);
+            MainPage = new NavigationPage(new VideoSelectionPage());
         }
     }
 }
