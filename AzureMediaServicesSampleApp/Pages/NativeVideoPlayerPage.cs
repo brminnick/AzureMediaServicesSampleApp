@@ -23,6 +23,7 @@ namespace AzureMediaServicesSampleApp
 
             _videoView = new VideoView
             {
+                Source = MediaConstants.EncryptedVideoUrl,
                 AspectMode = Plugin.MediaManager.Abstractions.Enums.VideoAspectMode.AspectFit
             };
 
@@ -37,7 +38,9 @@ namespace AzureMediaServicesSampleApp
             var relativeLayout = new RelativeLayout();
             relativeLayout.Children.Add(_videoView,
                                         Constraint.Constant(0),
-                                        Constraint.Constant(0));
+                                        Constraint.Constant(0),
+                                        Constraint.RelativeToParent(parent => parent.Width),
+                                        Constraint.RelativeToParent(parent => parent.Height));
             relativeLayout.Children.Add(_playButton,
                                         Constraint.Constant(horizontalButtonPadding),
                                         Constraint.RelativeToParent(parent => parent.Height - verticalButtonPadding - getPlayButtonHeight(parent)),
@@ -59,11 +62,6 @@ namespace AzureMediaServicesSampleApp
             base.OnAppearing();
 
             SubscribeEventHandlers();
-
-            _videoView.Source = MediaConstants.EncryptedVideoUrl;
-
-            CrossMediaManager.Current.Pause();
-            CrossMediaManager.Current.Play();
         }
 
         protected override void OnDisappearing()
