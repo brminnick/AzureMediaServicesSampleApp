@@ -90,6 +90,5 @@ namespace AzureMediaServicesSampleApp
         void HandlePlayButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Play();
         void HandleStopButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Stop();
         void HandlePauseButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Pause();
-
     }
 }
