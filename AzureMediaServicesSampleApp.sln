@@ -1,9 +1,9 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureMediaServicesSampleApp.iOS", "iOS\AzureMediaServicesSampleApp.iOS.csproj", "{98DB831E-054F-4597-8B61-92FFFA485F8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureMediaServicesSampleApp.iOS", "AzureMediaServicesSampleApp.iOS\AzureMediaServicesSampleApp.iOS.csproj", "{98DB831E-054F-4597-8B61-92FFFA485F8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureMediaServicesSampleApp.Droid", "Droid\AzureMediaServicesSampleApp.Droid.csproj", "{1FD7A05A-5F83-4458-8278-4457E0E3C5F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureMediaServicesSampleApp.Droid", "AzureMediaServicesSampleApp.Droid\AzureMediaServicesSampleApp.Droid.csproj", "{1FD7A05A-5F83-4458-8278-4457E0E3C5F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureMediaServicesSampleApp", "AzureMediaServicesSampleApp\AzureMediaServicesSampleApp.csproj", "{F077C21C-BC6A-48E8-8B14-30DB200C4EA2}"
 EndProject
