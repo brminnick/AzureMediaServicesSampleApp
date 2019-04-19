@@ -1,16 +1,15 @@
 ﻿using UIKit;
 using Foundation;
 
-using Plugin.MediaManager.Forms.iOS;
-
 namespace AzureMediaServicesSampleApp.iOS
 {
-    [Register("AppDelegate")]
+    [Register(nameof(AppDelegate))]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
         public override bool FinishedLaunching(UIApplication uiApplication, NSDictionary launchOptions)
         {
-			VideoViewRenderer.Init();
+            Plugin.MediaManager.Forms.iOS.VideoViewRenderer.Init();
+
             global::Xamarin.Forms.Forms.Init();
 
             LoadApplication(new App());

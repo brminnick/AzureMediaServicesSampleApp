@@ -2,8 +2,6 @@
 using Android.App;
 using Android.Content.PM;
 
-using Plugin.MediaManager.Forms.Android;
-
 namespace AzureMediaServicesSampleApp.Droid
 {
     [Activity(Label = "AzureMediaServicesSampleApp.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -16,7 +14,8 @@ namespace AzureMediaServicesSampleApp.Droid
 
             base.OnCreate(savedInstanceState);
 
-			VideoViewRenderer.Init();
+            Plugin.MediaManager.Forms.Android.VideoViewRenderer.Init();
+
             global::Xamarin.Forms.Forms.SetFlags("FastRenderers_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 

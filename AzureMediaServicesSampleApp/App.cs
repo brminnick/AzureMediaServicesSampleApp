@@ -1,18 +1,20 @@
-﻿using Xamarin.Forms;
-
+﻿using AzureMediaServicesSampleApp.Shared;
 using Plugin.MediaManager;
 
-using AzureMediaServicesSampleApp.Shared;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace AzureMediaServicesSampleApp
 {
-    public class App : Application
+    public class App : Xamarin.Forms.Application
     {
         public App()
         {
             CrossMediaManager.Current.RequestHeaders.Add(MediaConstants.EncryptedVideoHeaderKey, MediaConstants.EncryptedVideoHeaderToken);
 
-            MainPage = new NavigationPage(new VideoSelectionPage());
+            var mainPage = new Xamarin.Forms.NavigationPage(new VideoSelectionPage());
+            mainPage.On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+            MainPage = mainPage;
         }
     }
 }
