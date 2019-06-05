@@ -1,7 +1,5 @@
 ﻿using Xamarin.Forms;
 
-using AzureMediaServicesSampleApp.Shared;
-
 namespace AzureMediaServicesSampleApp
 {
     public class VideoWebViewPage : ContentPage

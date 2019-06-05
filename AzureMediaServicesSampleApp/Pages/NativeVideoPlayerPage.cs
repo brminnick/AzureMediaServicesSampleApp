@@ -5,8 +5,6 @@ using Xamarin.Forms;
 using Plugin.MediaManager;
 using Plugin.MediaManager.Forms;
 
-using AzureMediaServicesSampleApp.Shared;
-
 namespace AzureMediaServicesSampleApp
 {
     public class NativeVideoPlayerPage : ContentPage

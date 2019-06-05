@@ -1,5 +1,4 @@
-﻿using AzureMediaServicesSampleApp.Shared;
-using Plugin.MediaManager;
+﻿using Plugin.MediaManager;
 
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 

@@ -83,9 +83,9 @@
         <Reference Include="Xamarin.iOS" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Plugin.MediaManager.Forms" Version="0.4.5" />
+        <PackageReference Include="Plugin.MediaManager.Forms" Version="0.6.3" />
         <PackageReference Include="Xamarin.Forms">
-          <Version>3.6.0.344457</Version>
+          <Version>4.0.0.482894</Version>
         </PackageReference>
     </ItemGroup>
     <ItemGroup>

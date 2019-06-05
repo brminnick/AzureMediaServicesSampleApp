@@ -1,4 +1,4 @@
-﻿namespace AzureMediaServicesSampleApp.Shared
+﻿namespace AzureMediaServicesSampleApp
 {
     public static class MediaConstants
     {
