@@ -1,9 +1,10 @@
 ﻿using System;
 
-using Xamarin.Forms;
+using MediaManager;
+using MediaManager.Forms;
+using MediaManager.Video;
 
-using Plugin.MediaManager;
-using Plugin.MediaManager.Forms;
+using Xamarin.Forms;
 
 namespace AzureMediaServicesSampleApp
 {
@@ -17,7 +18,7 @@ namespace AzureMediaServicesSampleApp
             var videoView = new VideoView
             {
                 Source = MediaConstants.EncryptedVideoUrl,
-                AspectMode = Plugin.MediaManager.Abstractions.Enums.VideoAspectMode.AspectFit
+                VideoAspect = VideoAspectMode.AspectFit
             };
 
             var playButton = new Button { Text = "Play" };

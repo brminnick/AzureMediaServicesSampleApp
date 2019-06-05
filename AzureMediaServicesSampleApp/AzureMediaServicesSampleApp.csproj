@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>netstandard1.0</TargetFramework>
-		<PackageTargetFallback>portable-win+net45+wp80+win81+wpa81</PackageTargetFallback>
+		<TargetFramework>netstandard2.0</TargetFramework>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Plugin.MediaManager.Forms" Version="0.4.5" />
-		<PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
+		<PackageReference Include="Plugin.MediaManager.Forms" Version="0.6.3" />
+		<PackageReference Include="Xamarin.Forms" Version="4.0.0.482894" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Pages\" />

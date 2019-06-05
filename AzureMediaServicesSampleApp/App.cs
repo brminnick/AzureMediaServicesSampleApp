@@ -1,4 +1,4 @@
-﻿using Plugin.MediaManager;
+﻿using MediaManager;
 
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
