@@ -12,50 +12,30 @@ namespace AzureMediaServicesSampleApp
     {
         public NativeVideoPlayerPage()
         {
-            const int horizontalButtonPadding = 5;
-            const int verticalButtonPadding = 10;
-
             var videoView = new VideoView
             {
                 Source = MediaConstants.EncryptedVideoUrl,
                 VideoAspect = VideoAspectMode.AspectFit
             };
 
-            var playButton = new Button { Text = "Play" };
+            var playButton = new PlaybackButton("Play");
             playButton.Clicked += HandlePlayButtonClicked;
 
-            var pauseButton = new Button { Text = "Pause" };
+            var pauseButton = new PlaybackButton("Pause");
             pauseButton.Clicked += HandlePauseButtonClicked;
 
-            var stopButton = new Button { Text = "Stop" };
+            var stopButton = new PlaybackButton("Stop");
             stopButton.Clicked += HandleStopButtonClicked;
 
-            var relativeLayout = new RelativeLayout();
-            relativeLayout.Children.Add(videoView,
-                                        Constraint.Constant(0),
-                                        Constraint.Constant(0),
-                                        Constraint.RelativeToParent(parent => parent.Width),
-                                        Constraint.RelativeToParent(parent => parent.Height));
-            relativeLayout.Children.Add(playButton,
-                                        Constraint.Constant(horizontalButtonPadding),
-                                        Constraint.RelativeToParent(parent => parent.Height - verticalButtonPadding - getPlayButtonHeight(parent)),
-                                        Constraint.RelativeToParent(parent => (parent.Width - 4 * horizontalButtonPadding) / 3));
-            relativeLayout.Children.Add(pauseButton,
-                                        Constraint.RelativeToView(playButton, (parent, view) => view.X + view.Width + horizontalButtonPadding),
-                                        Constraint.RelativeToParent(parent => parent.Height - verticalButtonPadding - getPauseButtonHeight(parent)),
-                                        Constraint.RelativeToParent(parent => (parent.Width - 4 * horizontalButtonPadding) / 3));
-            relativeLayout.Children.Add(stopButton,
-                                        Constraint.RelativeToView(pauseButton, (parent, view) => view.X + view.Width + horizontalButtonPadding),
-                                        Constraint.RelativeToParent(parent => parent.Height - verticalButtonPadding - getStopButtonHeight(parent)),
-                                        Constraint.RelativeToParent(parent => (parent.Width - 4 * horizontalButtonPadding) / 3));
+            var absoluteLayout = new AbsoluteLayout();
+            absoluteLayout.Children.Add(videoView, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
+            absoluteLayout.Children.Add(playButton, new Rectangle(0.25, 1, -1, -1), AbsoluteLayoutFlags.PositionProportional);
+            absoluteLayout.Children.Add(pauseButton, new Rectangle(0.5, 1, -1, -1), AbsoluteLayoutFlags.PositionProportional);
+            absoluteLayout.Children.Add(stopButton, new Rectangle(0.75, 1, -1, -1), AbsoluteLayoutFlags.PositionProportional);
 
             Title = "Native Video Player";
 
-            Content = relativeLayout;
-
-            double getPlayButtonHeight(RelativeLayout p) => playButton.Measure(p.Width, p.Height).Request.Height;
-            double getPauseButtonHeight(RelativeLayout p) => pauseButton.Measure(p.Width, p.Height).Request.Height;
-            double getStopButtonHeight(RelativeLayout p) => stopButton.Measure(p.Width, p.Height).Request.Height;
+            Content = absoluteLayout;
         }
 
         protected override void OnDisappearing()
@@ -68,5 +48,16 @@ namespace AzureMediaServicesSampleApp
         void HandlePlayButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Play();
         void HandleStopButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Stop();
         void HandlePauseButtonClicked(object sender, EventArgs e) => CrossMediaManager.Current.Pause();
+
+        class PlaybackButton : Button
+        {
+            public PlaybackButton(string text)
+            {
+                Text = text;
+                BackgroundColor = new Color(255, 255, 255, 0.75);
+                Padding = new Thickness(15, 0);
+                Margin = new Thickness(0, 15);
+            }
+        }
     }
 }
