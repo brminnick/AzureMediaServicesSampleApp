@@ -1,18 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
-	</PropertyGroup>
-	<ItemGroup>
-        <PackageReference Include="windowsazure.mediaservices" Version="4.2.0" />
-        <PackageReference Include="windowsazure.mediaservices.extensions" Version="4.2.0" />
-		<PackageReference Include="Plugin.MediaManager.Forms" Version="0.8.7" />
-		<PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
-	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="Pages\" />
-		<Folder Include="Constants\" />
-		<Folder Include="Services\" />
-		<Folder Include="Models\" />
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.4" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1558-pre3" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Pages\" />
+        <Folder Include="Constants\" />
+        <Folder Include="Services\" />
+        <Folder Include="Models\" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Services\AzureMediaLibrary.cs" />
+        <Compile Remove="Services\AzureMediaServices.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Services\AzureMediaLibrary.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+        <None Include="Services\AzureMediaServices.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    </ItemGroup>
 </Project>

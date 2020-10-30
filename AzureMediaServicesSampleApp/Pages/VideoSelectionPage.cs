@@ -31,7 +31,7 @@ namespace AzureMediaServicesSampleApp
             {
                 var androidEmulatorLabel = new Label
                 {
-                    Text = "Note: Video playback fails when on an Android emulator\n\nPlease run this sample on a physical Android Device",
+                    Text = "Note: Video playback may fail when on an Android emulator\n\nPlease run this sample on a physical Android Device",
                     FontAttributes = FontAttributes.Italic,
                     HorizontalTextAlignment = TextAlignment.Center
                 };
