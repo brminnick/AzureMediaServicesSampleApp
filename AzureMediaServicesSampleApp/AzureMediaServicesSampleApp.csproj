@@ -5,8 +5,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.4" />
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1558-pre3" />
+        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.6" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1709-pre4" />
+        <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="1.0.0-pre5" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Pages\" />

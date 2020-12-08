@@ -47,8 +47,8 @@
         <Reference Include="Mono.Android" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.4" />
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1558-pre3" />
+        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.6" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1709-pre4" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="MainActivity.cs" />
