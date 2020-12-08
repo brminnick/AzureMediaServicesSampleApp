@@ -3,8 +3,10 @@
 using MediaManager;
 using MediaManager.Forms;
 using MediaManager.Video;
-
+using Xamarin.CommunityToolkit.Markup;
 using Xamarin.Forms;
+using static AzureMediaServicesSampleApp.MarkupExtensions;
+using static Xamarin.CommunityToolkit.Markup.GridRowsColumns;
 
 namespace AzureMediaServicesSampleApp
 {
@@ -12,31 +14,36 @@ namespace AzureMediaServicesSampleApp
     {
         public NativeVideoPlayerPage()
         {
-            var videoView = new VideoView
-            {
-                Source = MediaConstants.EncryptedVideoUrl,
-                VideoAspect = VideoAspectMode.AspectFit
-            };
-
-            var playButton = new PlaybackButton("Play");
-            playButton.Clicked += HandlePlayButtonClicked;
-
-            var pauseButton = new PlaybackButton("Pause");
-            pauseButton.Clicked += HandlePauseButtonClicked;
-
-            var stopButton = new PlaybackButton("Stop");
-            stopButton.Clicked += HandleStopButtonClicked;
-
-            var absoluteLayout = new AbsoluteLayout();
-            absoluteLayout.Children.Add(videoView, new Rectangle(0, 0, 1, 1), AbsoluteLayoutFlags.All);
-            absoluteLayout.Children.Add(playButton, new Rectangle(0.25, 1, -1, -1), AbsoluteLayoutFlags.PositionProportional);
-            absoluteLayout.Children.Add(pauseButton, new Rectangle(0.5, 1, -1, -1), AbsoluteLayoutFlags.PositionProportional);
-            absoluteLayout.Children.Add(stopButton, new Rectangle(0.75, 1, -1, -1), AbsoluteLayoutFlags.PositionProportional);
-
             Title = "Native Video Player";
 
-            Content = absoluteLayout;
+            Content = new Grid
+            {
+                RowDefinitions = Rows.Define(
+                    (Row.Video, Star),
+                    (Row.Controls, AbsoluteGridLength(100))),
+
+                Children =
+                {
+                    new VideoView
+                    {
+                        Source = MediaConstants.EncryptedVideoUrl,
+                        VideoAspect = VideoAspectMode.AspectFit
+                    }.Row(Row.Video).ColumnSpan(All<Column>()),
+
+                    new PlaybackButton("Play").Row(Row.Controls).Column(Column.Play)
+                        .Invoke(playButton => playButton.Clicked += HandlePlayButtonClicked),
+
+                    new PlaybackButton("Pause").Row(Row.Controls).Column(Column.Pause)
+                        .Invoke(pauseButton => pauseButton.Clicked += HandlePauseButtonClicked),
+
+                    new PlaybackButton("Stop").Row(Row.Controls).Column(Column.Stop)
+                        .Invoke(stopButton => stopButton.Clicked += HandleStopButtonClicked)
+                }
+            };
         }
+
+        enum Row { Video, Controls }
+        enum Column { Play, Pause, Stop }
 
         protected override void OnDisappearing()
         {

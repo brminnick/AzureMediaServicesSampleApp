@@ -10,7 +10,6 @@ namespace AzureMediaServicesSampleApp
         {
             Title = "Choose a Video";
 
-
             Content = new StackLayout
             {
                 Children =

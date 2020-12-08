@@ -1,5 +1,5 @@
 ﻿using MediaManager;
-
+using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace AzureMediaServicesSampleApp
@@ -15,5 +15,10 @@ namespace AzureMediaServicesSampleApp
 
             MainPage = mainPage;
         }
+    }
+
+    static class MarkupExtensions
+    {
+        public static GridLength AbsoluteGridLength(double value) => new(value, GridUnitType.Absolute);
     }
 }
