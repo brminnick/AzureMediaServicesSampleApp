@@ -5,7 +5,6 @@ using MediaManager.Forms;
 using MediaManager.Video;
 using Xamarin.CommunityToolkit.Markup;
 using Xamarin.Forms;
-using static AzureMediaServicesSampleApp.MarkupExtensions;
 using static Xamarin.CommunityToolkit.Markup.GridRowsColumns;
 
 namespace AzureMediaServicesSampleApp
@@ -20,7 +19,7 @@ namespace AzureMediaServicesSampleApp
             {
                 RowDefinitions = Rows.Define(
                     (Row.Video, Star),
-                    (Row.Controls, AbsoluteGridLength(100))),
+                    (Row.Controls, 100)),
 
                 Children =
                 {

@@ -83,8 +83,8 @@
         <Reference Include="Xamarin.iOS" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.6" />
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1709-pre4" />
+        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.9" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     </ItemGroup>
     <ItemGroup>
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />

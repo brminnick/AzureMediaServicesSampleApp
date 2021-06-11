@@ -2,13 +2,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <LangVersion>Latest</LangVersion>
-        <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.6" />
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1709-pre4" />
-        <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="1.0.0-pre5" />
+        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.9" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+        <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="1.2.0-pre2" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Pages\" />

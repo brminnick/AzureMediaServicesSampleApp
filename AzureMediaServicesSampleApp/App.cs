@@ -16,9 +16,4 @@ namespace AzureMediaServicesSampleApp
             MainPage = mainPage;
         }
     }
-
-    static class MarkupExtensions
-    {
-        public static GridLength AbsoluteGridLength(double value) => new(value, GridUnitType.Absolute);
-    }
 }
